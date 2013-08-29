@@ -1,0 +1,26 @@
+%h1 the blog
+%br
+%i.icon-plus
+= link_to 'new entry', new_article_path
+.row
+  %aside
+  .span8
+    - if collection.any?
+      %h3
+        Articles (#{collection.count})
+      %ol.articles
+        - collection.each do |article|
+          %li
+            %h2= link_to article.title, article_path(article)
+            %p
+              %span.content= article.content
+            %br
+            %span.user
+              by #{article.user.email}
+            %span.timestamp
+              article posted #{time_ago_in_words(article.created_at)} ago.
+            - if current_user.present? && current_user.id == article.user_id
+              = link_to "delete", article, method: :delete,
+                  data: { confirm: "You sure?" }, title: article.content
+
+

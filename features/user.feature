@@ -4,7 +4,7 @@ Feature: As a visitor I want to sign up,
 Scenario: User signs up by filling out the registration form with valid credentials
   Given I do not exist as a user
   When I sign up with valid user data
-  Then I should be on the home page
+  Then I should be on the articles page
 
 Scenario: User signs up without password confirmation
   When I sign up without a password confirmation
@@ -16,4 +16,4 @@ Scenario: User signs up without a password
 
 Scenario: A registered user can sign in
   When I sign in with valid credentials
-  Then I should be on the home page
+  Then I should be on the articles page

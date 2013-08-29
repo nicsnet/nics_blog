@@ -33,6 +33,7 @@ def delete_user
 end
 
 ### GIVEN ###
+
 Given /^I do not exist as a user$/ do
   create_visitor
   delete_user
@@ -64,13 +65,13 @@ end
 
 When /^I register with an invalid email$/ do
   create_visitor
-  @visitor = @visitor.merge(:email => "notanemail")
+  @visitor = @visitor.merge(email: "notanemail")
   sign_up
 end
 
 When /^I sign up with an invalid email$/ do
   create_visitor
-  @visitor = @visitor.merge(:email => "notanemail")
+  @visitor = @visitor.merge(email: "notanemail")
   sign_up
 end
 
@@ -88,24 +89,21 @@ end
 
 When /^I sign up with a mismatched password confirmation$/ do
   create_visitor
-  @visitor = @visitor.merge(:password_confirmation => "please123")
+  @visitor = @visitor.merge(password_confirmation: "please123")
   sign_up
 end
 
 When /^I sign in with a wrong email$/ do
-  @visitor = @visitor.merge(:email => "wrong@example.com")
+  @visitor = @visitor.merge(email: "wrong@example.com")
   sign_in
 end
 
 When /^I sign in with a wrong password$/ do
-  @visitor = @visitor.merge(:password => "wrongpass")
+  @visitor = @visitor.merge(password: "wrongpass")
   sign_in
 end
 
 ### THEN ###
-Then /^I should be on the home page$/ do
-  current_path.should eq("/")
-end
 
 Then /^I should see a missing password confirmation message$/ do
   page.should have_css('#error_explanation')
@@ -121,4 +119,3 @@ Then /^I should see a password can't be blank message$/ do
   page.should have_css('#error_explanation')
   page.should have_content "Password can't be blank"
 end
-

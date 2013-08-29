@@ -11,6 +11,7 @@ group :development, :test do
   gem "geordi"
   gem 'cucumber-rails', require: false
   gem "cucumber-websteps"
+  gem 'cucumber_factory'
   gem 'database_cleaner'
   gem "launchy"
   gem "faker"

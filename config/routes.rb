@@ -14,9 +14,7 @@ NicsBlog::Application.routes.draw do
 
   root to: 'pages#home'
 
-  # resources :articles do
-  #   resources :comments
-  # end
+  resources :articles
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

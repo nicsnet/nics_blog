@@ -67,6 +67,9 @@ GEM
       capybara (>= 1.1.2)
       cucumber (>= 1.1.1)
       launchy
+    cucumber_factory (1.8.6)
+      activesupport
+      cucumber
     database_cleaner (1.1.1)
     debugger (1.6.1)
       columnize (>= 0.3.1)
@@ -213,6 +216,7 @@ DEPENDENCIES
   coffee-rails
   cucumber-rails
   cucumber-websteps
+  cucumber_factory
   database_cleaner
   debugger
   devise

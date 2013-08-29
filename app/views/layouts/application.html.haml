@@ -15,15 +15,15 @@
     %header.navbar.navbar-fixed-top.navbar-inverse
       .navbar-inner
         .container
-          = link_to "little foxes", root_path, id: "logo"
+          = link_to 'little foxes', root_path, id: 'logo'
           %nav
             %ul.nav.pull-right
+              %li= link_to 'Home', root_path
+              %li= link_to 'Blog', articles_path
               - unless user_signed_in?
-                %li= link_to "Home", root_path
-                %li= link_to "Sign in", new_user_session_path
+                %li= link_to 'Sign in', new_user_session_path
               - else
-                -#%li= link_to "Articles", articles_path
-                %li= link_to "Sign out", destroy_user_session_path, :method => :delete
+                %li= link_to 'Sign out', destroy_user_session_path, method: :delete
     .container
       = yield
       = render 'shared/footer'

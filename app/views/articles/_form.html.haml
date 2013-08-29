@@ -1,0 +1,15 @@
+.row
+  .span6.offset3
+    = form_for @article do |f|
+      - if @article.errors.any?
+        #error_explanation
+          .alert.alert-error
+            The form contains #{pluralize(@article.errors.count, "error")}.
+          %ul
+            - @article.errors.full_messages.each do |msg|
+              %li
+                * #{msg}
+      .field
+        = f.text_field :title, placeholder: 'title'
+        = f.text_area :content, placeholder: "write someting..."
+      = f.submit "Save", class: "btn btn-large btn-warning"
