@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %meta{name: 'viewport', content: "width=device-width, initial-scale=1, maximum-scale=1"}
+
+    %title= content_for?(:title) ? yield(:title) : 'little foxes blog'
+    = stylesheet_link_tag    "application", media: "all",
+                             "data-turbolinks-track" => true
+    = javascript_include_tag "application",
+                             "data-turbolinks-track" => true
+    = csrf_meta_tags
+    /[if lt IE 9]
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  %body
+    %header.navbar.navbar-fixed-top.navbar-inverse
+      .navbar-inner
+        .container
+          = link_to "little foxes", root_path, id: "logo"
+          %nav
+            %ul.nav.pull-right
+              - unless user_signed_in?
+                %li= link_to "Home", root_path
+                %li= link_to "Sign in", new_user_session_path
+              - else
+                -#%li= link_to "Articles", articles_path
+                %li= link_to "Sign out", destroy_user_session_path, :method => :delete
+    .container
+      = yield
+      = render 'shared/footer'
